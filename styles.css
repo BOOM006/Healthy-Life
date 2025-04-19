@@ -1,0 +1,105 @@
+:root {
+  /*COLORS*/
+  --FOOTER-BGCOLOR: rgb(67, 61, 61);
+  --HEADER-COLOR: whitesmoke;
+  --GRADIENT-COLOR: rgb(246, 217, 217);
+  --BGCOLOR: #85e59ab6;
+  --TABLE-BGCOLOR: rgba(255, 255, 255, 0.711);
+  --FOOTER-BGCOLOR: rgb(194, 186, 186);
+
+  /*FONTS*/
+  --FF: "Times New Roman";
+  --FS-INPUT: clamp(0.9rem, 1.6vw, 5rem);
+  --FS-TEXT: clamp(1rem, 1.8vw, 5rem); /*Texty - a, p*/
+  --FS-H1: clamp(2rem, 2.5vw, 6rem); /*Nadpis h1*/
+  --FS-H2: clamp(1.6rem, 2.5vw, 6rem); /*Nadpis h2*/
+  --FS-H3: clamp(1.5rem, 2.2vw, 5.8rem); /*Nadpis h3*/
+  --FS-H4: clamp(1.1rem, 2vw, 5.1rem); /*Nadpis h3*/
+}
+
+body {
+  margin: 0;
+}
+
+input,
+button {
+  font-size: var(--FS-INPUT);
+  padding: 1rem;
+  text-align: center;
+  border-radius: 1.5rem;
+}
+
+p,
+label {
+  font-size: var(--FS-TEXT);
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+button {
+  width: 70%;
+  margin: 1rem auto 0;
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 40%;
+  margin: 5rem auto;
+  background-color: var(--BGCOLOR);
+  border-radius: 3rem;
+  border: 2px solid grey;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin: auto;
+}
+
+#output {
+  display: none;
+}
+
+#okay {
+  display: none;
+  background-color: rgba(255, 0, 0, 0.466);
+  width: 35%;
+}
+
+#getActivity {
+  background-color: rgba(0, 128, 0, 0.542);
+}
+
+#endGetting {
+  visibility: hidden;
+  background-color: rgba(0, 0, 255, 0.597);
+}
+
+#reset {
+  display: none;
+  background-color: rgba(255, 0, 0, 0.785);
+}
+
+footer {
+  margin-top: 1rem;
+  background-color: var(--FOOTER-BGCOLOR);
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 97%;
+  }
+
+main {
+    width: 90%;
+}
+
+}
