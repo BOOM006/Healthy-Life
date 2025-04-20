@@ -22,12 +22,52 @@
     <div class="card">
       <header><h1>Healthy Life</h1></header>
       <main id="main">
-        <label for="activity" id="activityLabel">Your activity: </label>
-        <input type="text" id="activity" placeholder="walking" />
         <p id="output"></p>
         <button id="okay">OK</button>
-        <button id="getActivity">Enter</button>
-        <button id="endGetting">Submit</button>
+        <button id="yes">Yes</button>
+       <button id="no">Return</button>
+
+        <div class="activities">
+          <div class="left" id="left">
+            <p>Walking</p>
+            <p>Running</p>
+            <p>Cycling</p>
+            <p>Swimming</p>
+            <p>Workout</p>
+            <p>Smoking</p>
+            <p>Vaping</p>
+            <p>Drinking</p>
+          </div>
+          <div class="right" id="right">
+            <div class="yes">
+              <label>Yes</label>
+              <input type="radio" name="walking" id="walkingYes" />
+              <input type="radio" name="running" id="runningYes" />
+              <input type="radio" name="cycling" id="cyclingYes" />
+              <input type="radio" name="swimming" id="swimmingYes" />
+              <input type="radio" name="workouting" id="workoutingYes" />
+              <input type="radio" name="smoking" id="smokingYes" />
+              <input type="radio" name="vaping" id="vapingYes" />
+              <input type="radio" name="drinking" id="drinkingYes" />
+            </div>
+            <div class="no">
+              <label>No</label>
+              <input type="radio" name="walking" id="walkingNo" />
+              <input type="radio" name="running" id="runningNo" />
+              <input type="radio" name="cycling" id="cyclingNo" />
+              <input type="radio" name="swimming" id="swimmingNo" />
+              <input type="radio" name="workouting" id="workoutingNo" />
+              <input type="radio" name="smoking" id="smokingNo" />
+              <input type="radio" name="vaping" id="vapingNo" />
+              <input type="radio" name="drinking" id="drinkingNo" />
+            </div>
+          </div>
+        </div>
+
+        <label for="activity" id="activityLabel">Your activity: </label>
+        <input type="text" id="activity" placeholder="walking" />
+        <button id="okay">OK</button>
+        <button id="getActivity">Submit</button>
         <button id="reset">RESET</button>
       </main>
       <footer>

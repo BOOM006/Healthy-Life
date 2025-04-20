@@ -62,6 +62,52 @@ main {
   margin: auto;
 }
 
+#yes {
+  display: none;
+}
+
+#no {
+  display: none;
+}
+
+.activities {
+  display: flex;
+  margin: auto;
+  width: 100%;
+}
+
+.left {
+  display: flex;
+  width: 50%;
+  margin-top: 1.7rem;
+  justify-content: left;
+  flex-direction: column;
+}
+
+.left p {
+  margin: 0 0 0.2rem 0
+}
+
+.right {
+  display: flex;
+  width: 50%;
+  gap: 1rem;
+}
+
+.right input {
+  margin-bottom: 1rem;
+}
+
+.yes {
+  display: flex;
+  flex-direction: column;
+}
+
+.no {
+  display: flex;
+  flex-direction: column;
+}
+
 #output {
   display: none;
 }
@@ -98,8 +144,7 @@ footer {
     width: 97%;
   }
 
-main {
+  main {
     width: 90%;
-}
-
+  }
 }
