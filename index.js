@@ -121,14 +121,15 @@ let hideLeft = document.getElementById("left");
 let hideRight = document.getElementById("right");
 let showYesBtn = document.getElementById("yes");
 let showNoBtn = document.getElementById("no");
+let nextBtn = document.getElementById("next");
 
 document.getElementById("getActivity").onclick = function () {
   getActivity(getActivitiesStatus);
 };
-
-document.getElementById("yes").onclick = showScore;
+document.getElementById("next").onclick = activityRegularity;
+document.getElementById("yes").onclick = activityRegularity;
 document.getElementById("no").onclick = isOK;
-document.getElementById("endGetting").onclick = endGetting;
+//document.getElementById("endGetting").onclick = endGetting;
 document.getElementById("reset").onclick = reset;
 
 function isHealthy(element) {
@@ -190,7 +191,7 @@ function getActivity(callback) {
     okBtn.style.display = "none";
     hideLeft.style.visibility = "hidden";
     hideRight.style.visibility = "hidden";
-   // submitBtn.style.visibility = "hidden";
+    // submitBtn.style.visibility = "hidden";
     mainWidth.style.width = "90%";
   } else if (activitiesList.includes(activity)) {
     outputP.style.display = "block";
@@ -201,7 +202,7 @@ function getActivity(callback) {
     okBtn.style.display = "block";
     hideLeft.style.visibility = "hidden";
     hideRight.style.visibility = "hidden";
-   // submitBtn.style.visibility = "hidden";
+    // submitBtn.style.visibility = "hidden";
     mainWidth.style.width = "90%";
     document.getElementById("activity").value = "";
     document.getElementById("okay").onclick = isOK;
@@ -220,7 +221,7 @@ function getActivity(callback) {
   } else {
     activitiesList.push(activity); //všetko ide do poľa
     document.getElementById("activity").value = "";
-
+    console.log(activitiesList);
     //submitBtn.style.visibility = "visible";
   }
 
@@ -263,8 +264,8 @@ function reset() {
   document.getElementById("activity").value = "";
 
   enterBtn.style.display = "block";
- // submitBtn.style.display = "block";
- // submitBtn.style.visibility = "hidden";
+  // submitBtn.style.display = "block";
+  // submitBtn.style.visibility = "hidden";
   resetBtn.style.display = "none";
   activityLabel.style.display = "block";
   activityInput.style.display = "block";
@@ -289,7 +290,7 @@ function isOK() {
   }
 
   if (activitiesList.length != 0) {
-   // submitBtn.style.visibility = "visible";
+    // submitBtn.style.visibility = "visible";
   }
 }
 
@@ -307,25 +308,67 @@ function getActivitiesStatus() {
       activityInput.style.display = "none";
       enterBtn.style.display = "none";
       okBtn.style.display = "block";
-  //    submitBtn.style.visibility = "hidden";
       mainWidth.style.width = "90%";
       hideLeft.style.visibility = "hidden";
       hideRight.style.visibility = "hidden";
       showYesBtn.style.display = "none";
       showNoBtn.style.display = "none";
       document.getElementById("okay").onclick = isOK;
-    } else if (activitiesList.includes(activity)) {
-      //aby sa nemohli spamovať
-    } else {
+    } else if (yesRadio.checked && !activitiesList.includes(activity)) {
+      // iba ak odpovedal ÁNO
       results[activity] = "YES";
       activitiesList.push(activity);
     }
   });
 }
 
+function activityRegularity() {
+  outputP.innerHTML = ""; // Vyčisti výstup pred opätovným zobrazením
+  outputP.style.display = "block";
+  activityLabel.style.display = "none";
+  activityInput.style.display = "none";
+  enterBtn.style.display = "none";
+  okBtn.style.display = "none";
+  hideLeft.style.visibility = "hidden";
+  hideRight.style.visibility = "hidden";
+  mainWidth.style.width = "90%";
+
+  activitiesList.forEach((activity, index) => {
+    const container = document.createElement("div");
+    container.style.marginBottom = "10px";
+
+    const title = document.createElement("p");
+    title.innerText = `How often are you: ${activity}?`;
+    container.appendChild(title);
+
+    const options = ["Once a week", "Občas", "Pravidelne"];
+
+    options.forEach((option, i) => {
+      const radioContainer = document.createElement("div");
+
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = `frequency_${index}`;
+      radio.value = option.toLowerCase();
+      radio.id = `radio_${index}_${i}`;
+
+      const label = document.createElement("label");
+      label.htmlFor = radio.id;
+      label.innerText = option;
+      label.style.marginLeft = "5px";
+
+      radioContainer.appendChild(radio);
+      radioContainer.appendChild(label);
+      container.appendChild(radioContainer);
+    });
+
+    outputP.appendChild(container);
+  });
+}
+
 function showScore() {
   enterBtn.style.display = "none";
- // submitBtn.style.display = "none";
+  // submitBtn.style.display = "none";
   resetBtn.style.display = "block";
   activityLabel.style.display = "none";
   activityInput.style.display = "none";
@@ -352,4 +395,3 @@ function showScore() {
     "Your health score is: " + score;
   console.log("Score: " + score);
 }
-
